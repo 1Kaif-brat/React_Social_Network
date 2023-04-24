@@ -1,0 +1,23 @@
+.nav {
+    grid-area: n;
+    background-color: rgb(129, 206, 221);
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.list{
+    margin: 5px;
+    font-size: 20px;
+    color: black;     
+}
+
+.list a {
+    text-decoration: none;  
+}
+
+.active {
+    margin: 5px;
+    color : gold;
+    font-size: 25px;
+}
+

@@ -1,0 +1,14 @@
+.post{
+
+font-size: 23px;
+}
+
+.post img {
+  width: 20px;
+  margin: 5px;
+  border-radius: 50%;
+}
+.like img{
+  width: 150px;
+  height: 155px;
+}

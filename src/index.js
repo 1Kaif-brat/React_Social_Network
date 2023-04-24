@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+let dialogsData = [
+    { id: '1', name: 'Dimych', },
+    { id: '2', name: 'Andre', },
+    { id: '3', name: 'Max', },
+    { id: '4', name: 'Pablo', },
+    { id: '5', name: 'Dani', },
+];
+
+let messagesData = [
+    { id: "1", message: "Hello", },
+    { id: "2", message: "How are ?", },
+    { id: "3", message: "What is ?", },
+    { id: "4", message: "My name is ZobjiQ", },
+    { id: "5", message: "This is BLL", },
+];
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App dialogdata = {dialogsData}  messagedata = {messagesData}/>);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
