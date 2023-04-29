@@ -5,8 +5,9 @@ import DialogItems from './DialogItems/DialogItems';
 import Message from './Message/Message';
 
 const Dialogs = (props) => {
-    let dialogsElements = props.datadialog.map(el => <DialogItems name={el.name} id={el.id} />)
-    let messageElements = props.datamessage.map(el => <Message message={el.message} />)
+    
+    let dialogsElements = props.datadialog.map(el => <DialogItems name={el.name} id={el.id} imgSrc = {el.imgSrc} />)
+    let messageElements = props.datamessage.map(el => <Message message={el.message}  updateMessage = {props.updateMessage}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

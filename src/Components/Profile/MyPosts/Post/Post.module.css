@@ -1,5 +1,5 @@
 .post{
-
+  
 font-size: 23px;
 }
 
@@ -11,4 +11,29 @@ font-size: 23px;
 .like img{
   width: 150px;
   height: 155px;
+  
 }
+.like{
+  margin-left: 5px;
+  font-size: 15px;
+  display: flex;
+  
+  
+}
+.active {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.heart{
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 5px;
+  
+}
+

@@ -21,3 +21,22 @@
     font-size: 25px;
 }
 
+
+.listt{
+    display: flex;
+}
+
+.one{
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 5px;
+    text-align: center;
+}
+.one img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
