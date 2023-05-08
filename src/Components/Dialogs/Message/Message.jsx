@@ -1,13 +1,14 @@
 import React from 'react';
 import s from './Message.module.css';
+import { actionUpdateMessage } from '../../Redux/State';
 
 
 const Message = (props) => {
     let valueTextArea = React.createRef();
-    
+
     let onPostChange = () => {
-        let v = valueTextArea.current.value;
-        props.updateMessage(v)
+        let mess = valueTextArea.current.value;
+        props.dispatch(actionUpdateMessage(mess))
     }
 
     return (

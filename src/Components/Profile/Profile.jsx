@@ -7,7 +7,7 @@ const Profile = (p) => {
   
   return <div >
     <InfoProf />
-    <MyPosts postsData={p.postsData} funcAddPost={p.funcAddPost} newPostText={p.newPostText} updateNewPostText={p.updateNewPostText} />
+    <MyPosts postsData={p.postsData} dispatch={p.dispatch} newPostText={p.newPostText}/>
   </div>
 }
 

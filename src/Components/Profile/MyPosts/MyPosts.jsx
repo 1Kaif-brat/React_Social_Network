@@ -1,22 +1,24 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
+import { actionAddPost, actionUpdatePostText } from '../../Redux/State';
 
 const MyPosts = (p) => {
-  
+
   let postElements = p.postsData.map(el => <Post message={el.message} likes={el.likes} />)
   let refAreaValue = React.createRef();
-  
+
   let addPost = () => {
-    p.funcAddPost()
+    p.dispatch(actionAddPost())
   };
 
   let onPostChange = () => {
     let textAr = refAreaValue.current.value;
-    p.updateNewPostText(textAr);
+    p.dispatch(actionUpdatePostText(textAr));
+
   }
 
-  
+
   return (
     <div className={s.fieldd}>
       <div>
