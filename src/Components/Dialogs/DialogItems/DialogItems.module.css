@@ -1,14 +1,36 @@
 .dialog {
     padding: 10px;
+    display: flex;
+    text-align: center;
+    
+    
     
 }
 .img{
-    height: 25px;
-    width: 25px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;  
     
 }
 
 .circle{
-    display: inline-flex;    
+    display: inline-flex;  
+    
+}
+
+.message {
+    display: flex;
+    margin-left: 15px;
+    
+}
+.btnSend{
+    margin-left: 2px;
+}
+
+.sendmess {
+    width: 200px;
+    height: 60px;
+    border: 1px solid #000;
+    margin-left: 15px;
+
 }

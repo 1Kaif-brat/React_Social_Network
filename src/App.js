@@ -12,7 +12,7 @@ import Friends from './Components/Friends/Friends';
 
 
 const App = (props) => {
-//debugger
+  //debugger
 
   return (
     <div className='app-wrapper'>
@@ -20,8 +20,15 @@ const App = (props) => {
       <Navbar img={props.state.messagePage.dialogsData} />
       <div className="app-wrapper-content">
         <Routes>
-          <Route path="/dialogs" element={<Dialogs datadialog={props.state.messagePage.dialogsData} datamessage={props.state.messagePage.messagesData} dispatch = {props.dispatch} />} />
-          <Route path="/profile" element={<Profile postsData={props.state.profilePage.postsData} dispatch={props.dispatch} newPostText={props.state.profilePage.newPostText} />} />
+          <Route path="/dialogs" element={<Dialogs
+            newMessageBody={props.state.messagePage.newMessageBody}
+            dialogsData={props.state.messagePage.dialogsData}
+            messagesData={props.state.messagePage.messagesData}
+            dispatch={props.dispatch} />} />
+          <Route path="/profile" element={<Profile
+            postsData={props.state.profilePage.postsData}
+            dispatch={props.dispatch}
+            newPostText={props.state.profilePage.newPostText} />} />
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music name='Andrey' />} />
           <Route path="/setting" element={<Setting />} />

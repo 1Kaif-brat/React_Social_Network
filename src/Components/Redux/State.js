@@ -1,6 +1,8 @@
+import { act } from "react-dom/test-utils";
+
 const UPDATEPOSTTEXT = 'UPDATEPOSTTEXT';
 const ADDPOST = 'ADDPOST';
-const UPDATEMESSAGE = 'UPDATEMESSAGE';
+const SENDMESSAGETEXTAREA = 'SENDMESSAGETEXTAREA'
 let store = {
     _rerenderEntireTree() { alert('hhhhhhh') },
     _state: {
@@ -27,26 +29,12 @@ let store = {
                 { id: '4', name: 'Pablo', imgSrc: 'http://two-worlds.ru/wp-content/uploads/2017/06/17190.jpg' },
                 { id: '5', name: 'Dani', imgSrc: 'https://pazlyigra.ru/uploads/posts/2021-01/1611038047_horses_three_3_507391_3840x2400.jpg' },
             ],
+            newMessageBody: '',
 
         },
         sidebar: {},
     },
-    // addPost : function () {
-    //     this._state.profilePage.postsData.push({
-    //         id: '5', message: this._state.profilePage.newPostText, likes: '10',
-    //     })
-    //     this._state.profilePage.newPostText = '';
-    //     this._rerenderEntireTree(this._state)
-    // },
-    // updateNewPostText : function (newText) {    
-    //     this._state.profilePage.newPostText = newText;
-    //     this._rerenderEntireTree(this._state)
-    //     console.log(this._state.profilePage);    
-    // },
-    // updateMessage(newMessage) {
-    //     store._state.messagePage.messagesData[0].message = newMessage;
-    //     store._rerenderEntireTree(store._state)
-    // },
+
     subscribe(observer) {
         this._rerenderEntireTree = observer;
     },
@@ -63,9 +51,10 @@ let store = {
         } else if (action.type == UPDATEPOSTTEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._rerenderEntireTree(this._state)
-        } else if (action.type == UPDATEMESSAGE) {
-            store._state.messagePage.messagesData[0].message = action.newMessage;
-            store._rerenderEntireTree(store._state)
+        } else if (action.type == SENDMESSAGETEXTAREA) {
+            this._state.messagePage.newMessageBody = action.message;
+            console.log(this._state.messagePage.newMessageBody)
+            this._rerenderEntireTree(this._state)
         }
     }
 }
@@ -76,9 +65,11 @@ export let actionUpdatePostText = (textAr) => {
 export let actionAddPost = () => {
     return { type: ADDPOST }
 }
-export let actionUpdateMessage = (mess) => {
-    return { type: UPDATEMESSAGE, newMessage: mess }
+
+export let addStateMessageFromTextArea = (m) => {
+    return { type: SENDMESSAGETEXTAREA, message: m }
 }
+
 export { store };
 
 
