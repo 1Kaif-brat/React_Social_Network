@@ -11,12 +11,14 @@ const DialogItems = (props) => {
 
     let sendToStateValueTextArea = () => {
         let textareaValue = valueTextArea.current.value;
-        props.dispatch(addStateMessageFromTextArea(textareaValue));
+        props.dispatch(addStateMessageFromTextArea(textareaValue, props.id));
     }
 
     let addMessageTextToDiv = () => {
-        valueInnerHTMLDiv.current.innerHTML = props.newMessageBody;
+        valueInnerHTMLDiv.current.innerHTML = props.messageText;
         valueTextArea.current.value = ''
+        console.log(valueTextArea.current.id)
+
     }
 
     return (
@@ -30,7 +32,7 @@ const DialogItems = (props) => {
 
             </NavLink>
             <div className={s.message}>
-                <textarea ref={valueTextArea} onChange={sendToStateValueTextArea} />
+                <textarea id = {props.id} ref={valueTextArea} onChange={sendToStateValueTextArea} value={props.messageText} />
                 <button className={s.btnSend} onClick={addMessageTextToDiv}>Send</button>
                 <div className={s.sendmess} ref={valueInnerHTMLDiv}></div>
             </div>

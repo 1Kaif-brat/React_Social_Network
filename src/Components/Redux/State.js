@@ -1,8 +1,13 @@
 import { act } from "react-dom/test-utils";
+import profileReduce from "./profile-reducer";
+import messageReduce from "./message-reducer";
+
 
 const UPDATEPOSTTEXT = 'UPDATEPOSTTEXT';
 const ADDPOST = 'ADDPOST';
 const SENDMESSAGETEXTAREA = 'SENDMESSAGETEXTAREA'
+
+
 let store = {
     _rerenderEntireTree() { alert('hhhhhhh') },
     _state: {
@@ -12,7 +17,6 @@ let store = {
                 { id: '2', message: 'How are you ?', likes: '22', },
             ],
             newPostText: '',
-
         },
         messagePage: {
             messagesData: [
@@ -29,10 +33,9 @@ let store = {
                 { id: '4', name: 'Pablo', imgSrc: 'http://two-worlds.ru/wp-content/uploads/2017/06/17190.jpg' },
                 { id: '5', name: 'Dani', imgSrc: 'https://pazlyigra.ru/uploads/posts/2021-01/1611038047_horses_three_3_507391_3840x2400.jpg' },
             ],
-            newMessageBody: '',
+            newMessageBody: [],
 
         },
-        sidebar: {},
     },
 
     subscribe(observer) {
@@ -42,20 +45,11 @@ let store = {
         return this._state
     },
     dispatch: function (action) {
-        if (action.type == ADDPOST) {
-            this._state.profilePage.postsData.push({
-                id: '5', message: this._state.profilePage.newPostText, likes: '10',
-            })
-            this._state.profilePage.newPostText = '';
-            this._rerenderEntireTree(this._state)
-        } else if (action.type == UPDATEPOSTTEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._rerenderEntireTree(this._state)
-        } else if (action.type == SENDMESSAGETEXTAREA) {
-            this._state.messagePage.newMessageBody = action.message;
-            console.log(this._state.messagePage.newMessageBody)
-            this._rerenderEntireTree(this._state)
-        }
+        this._state.profilePage = profileReduce(this._state.profilePage, action)
+        this._state.messagePage = messageReduce(this._state.messagePage, action)
+        
+        this._rerenderEntireTree(this._state)
+        console.log(this._state)
     }
 }
 
@@ -66,11 +60,15 @@ export let actionAddPost = () => {
     return { type: ADDPOST }
 }
 
-export let addStateMessageFromTextArea = (m) => {
-    return { type: SENDMESSAGETEXTAREA, message: m }
+export let addStateMessageFromTextArea = (m,id) => {
+    return { type: SENDMESSAGETEXTAREA, message: m, id,  }
 }
 
+
+
 export { store };
+
+
 
 
 
